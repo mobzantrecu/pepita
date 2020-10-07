@@ -1,0 +1,96 @@
+/*CAMBIOS GENERALES*/
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image: url("../img/espacio-con-estrellas-2899.jpg");
+    background-repeat: no-repeat;
+    margin-top: 500px;
+    padding-top: 40px;
+}
+
+/*PROPIEDADES DE VISTA*/
+.hidden{
+    visibility: hidden;
+    -webkit-transition: opacity 3s;
+  ;
+    opacity: 0;
+}
+
+.visible{
+    visibility: visible;
+    -webkit-transition: opacity 3s;
+ 
+    opacity: 1;
+}   
+
+/*GAME - MENU -FRAME*/
+
+main{
+    height: 100vh;
+    width: 100vw;
+}
+
+.frame{
+    position: absolute;
+    width: 600px;
+    height:  500px; 
+}
+
+p{
+    font-family: cursive;
+    font-size: 30px;
+    color: #EEE;
+}
+
+.frame .main-button{
+    -webkit-transition: border-radius 1s, text-shadow 1s, color 1s;
+    font-family: cursive;
+    font-size: 30px;
+    color: #EEE;
+    margin: 10px;
+    padding: 10px;
+    width: 300px;
+    background: none;
+    text-shadow: 0px 0px 8px white;
+    border: 1px solid #dedede;
+    border-radius: 3px;
+    display: inline-block;
+    text-decoration: none;
+    border-color: #8dc5da #76b7cf #63abc7;
+    box-shadow: 0px 3px 5px rgba(255,255,255,0.5);
+}
+
+.frame .main-button:hover{
+    border-radius: 20px;
+    text-shadow: 0px 0px 50px white;
+    color: #ffffff;
+}
+
+.frame .main-button:active{
+    text-shadow: 0px 0px 20px #00ff00;
+}
+
+#game{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+#pepita-menu{
+    height: -50%;
+    position: relative;
+    left: -20%;
+}
+
+#img-pepita{
+    height: 100%;
+    position: absolute;
+    left: -20%;
+}
+
+#logoCodeQueens{
+    height: 80px;
+}
+
