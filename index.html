@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
 </head>
-<body class="d-flex flex-column justify-content-between">
+<body class="d-flex flex-column justify-content-between" >
     <main>
   
         <div id="game" >
@@ -91,11 +91,51 @@
               
        
             </div>
+         
+
+
+            <!-- GRILLA Y CANVAS -->
+            <div id="canva" class="frame hidden grilla">
             
-            <!-- CANVAS -->
-            <div id="canva" class="frame hidden">
+                
+                <div class="container">
+                    <article id="uno">
+                        <a href="#dos" class="puerta">puerta</a>
+            
+                    </article>
+                    <article id="dos">
+                        <a href="#tres" class="puerta">puerta</a>
+            
+                    </article>
+            
+                    <article id="tres">
+                        <a href="#cuatro" class="puerta">puerta</a>
+            
+                    </article>
+            
+                    <article id="cuatro">
+                        <a href="#cinco" class="puerta">puerta</a>
+            
+                    </article>
+            
+                    <article id="cinco">
+                        <a href="#seis" class="puerta">puerta</a>
+                    </article>
+            
+                    <article id="seis">
+            
+                        <a href="#uno" class="puerta">puerta</a>
+                        <button onclick="game.setFrameVisible('main'); game.setFrameHidden('canva');">
+                            Back to Menu
+                        </button>
+                    </article>
+                </div>
+
                 <canvas></canvas>
-                <button onclick="game.setFrameVisible('main'); game.setFrameHidden('canva');">Back to Menu</button>
+
+
+               
+            
             </div>
         </div>
     </main>

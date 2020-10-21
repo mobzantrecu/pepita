@@ -3,34 +3,35 @@
     margin: 0;
     padding: 0;
 }
-body{
-    background-image: url("../img/espacio-con-estrellas-2899.jpg");
-    background-repeat: no-repeat;
-    margin-top: 500px;
-    padding-top: 40px;
-}
+/* body{
+    ESTO ES PARA QUE NO SALCA LA BARRA DE LA DERECHA, PERO LO DEJÉ COMENTADO MIENTRAS TRANTO  
+     overflow: hidden; 
+} 
+*/
 #titulo{
-    margin-top: 1rem;
+    margin-top: 3rem;
 }
 
 /*PROPIEDADES DE VISTA*/
 .hidden{
     visibility: hidden;
     -webkit-transition: opacity 3s;
-  ;
     opacity: 0;
 }
 
 .visible{
     visibility: visible;
     -webkit-transition: opacity 3s;
- 
+
     opacity: 1;
-}   
+}
 
 /*GAME - MENU -FRAME*/
 
 main{
+    background-image: url("../img/espacio-con-estrellas-2899.jpg");
+
+    background-repeat: no-repeat;
     height: 100vh;
     width: 100vw;
 }
@@ -38,7 +39,8 @@ main{
 .frame{
     position: absolute;
     width: 600px;
-    height:  500px; 
+    height:  500px;
+
 }
 
 p{
@@ -97,4 +99,38 @@ p{
 #logoCodeQueens{
     height: 80px;
 }
+/* ---------GRILLA----------- */
+.grilla{
+width: 100vw;
+height: 100vh;
+border: 1px solid black;
+}
+.container{
+    display: grid;
+    grid-template-columns: repeat(3, 100vw);
+    grid-template-rows: repeat(2, 100vh);
+    position: relative;
+  padding: 0!important;
+    margin: 0 0 0 0!important;
 
+}
+.container article{
+    border: 2px solid blueviolet;
+}
+a{
+    color: rgb(255, 0, 0);
+    font-size: 25px;
+    text-decoration: none;
+}
+a:visited, a:hover {
+
+    color: red!important;
+  }
+
+#uno{
+    background-image: url("../img/lab1/fondoAzulito.jpg");
+     background-size: cover; 
+    object-fit: cover;
+    background-repeat: no-repeat;
+  
+  }
