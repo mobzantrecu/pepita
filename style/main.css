@@ -128,7 +128,6 @@ a:visited, a:hover {
   }
 
 #uno{
-    background-image: url("../img/lab1/fondoAzulito.jpg");
      background-size: cover; 
     object-fit: cover;
     background-repeat: no-repeat;
