@@ -5,10 +5,14 @@ var canHeight = window.innerHeight * 0.8;
 var sheetWidth = 938;
 var sheetHeight= 680;
 // The attributes of the player.
+const monster = new Image();
+monster.src = `img/monster.png`;
+const background = new Image();
+background.src = `img/background.platform.jpg`;
 
 var defaultPlayerValues = {
     x: 25,
-    y: 200,
+    y: 175,
     x_v: 0,
     y_v: 0,
     jump : true,
@@ -36,8 +40,8 @@ let enemies = [{
     height:30
 },
 {
-    x:300,
-    y:250,
+    x:250,
+    y:300,
     width:30,
     height:30
 },
@@ -65,6 +69,7 @@ let enemies = [{
     width:30,
     height:30
 }];
+
 let side = 'right'
 // The friction and gravity to show realistic movements    
 var gravity = 0.6;
@@ -76,29 +81,33 @@ var platforms = [];
 // Function to render the canvas
 function rendercanvas(){
     ctx.fillStyle = "#F0F8FF";
-    ctx.fillRect(0, 0, sheetWidth, sheetHeight);
+    ctx.drawImage(background, 0, 0, sheetWidth, sheetHeight);
 }
 // Function to render the player
 
 function renderEnemies(){
     ctx.fillStyle = "#F08080";
     enemies.forEach( enemy => {
-        ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
+
+        ctx.drawImage(monster, enemy.x -  enemy.width, enemy.y - enemy.height, enemy.width, enemy.height);
+        ctx.lineWidth = 2;
+        ctx.strokeStyle="#FF0000";
+        ctx.strokeRect(enemy.x -  enemy.width, enemy.y - enemy.height,  enemy.width, enemy.height);//for white background
     })
 }
 
 function restartPosition(){
-    console.log(defaultPlayerValues)
     player = {...defaultPlayerValues};
 }
 
 function renderplayer(movement){
     pepita = new Image();
     pepita.src = `img/pepita_${movement}.png`;
-    // ctx.fillStyle = "#F08080";
-    ctx.drawImage(pepita, (player.x)-20, (player.y)-20, player.width, player.height);
-    // ctx.fillRect(pepita,(player.x)-20, (player.y)-20, player.width, player.height);
-    }
+    ctx.drawImage(pepita, player.x - player.width, player.y - player.height, player.width, player.height);
+    ctx.lineWidth = 2;
+    ctx.strokeStyle="#FF0000";
+    ctx.strokeRect(player.x - player.width, player.y - player.height,  player.width, player.height);
+}
 // Function to create platforms
 function createplat(){
     platforms.push(
@@ -129,7 +138,7 @@ function createplat(){
         {
             x: 700,
             y: 250,
-            width: 200,
+            width: 250,
             height: 15
         }
     );
@@ -137,7 +146,7 @@ function createplat(){
     }
 // Function to render platforms
 function renderplat(){
-    ctx.fillStyle = "#45597E";
+    ctx.fillStyle = "#8C158E";
     platforms.forEach((platform) => {
         ctx.fillRect(platform.x, platform.y, platform.width, platform.height);
     })
@@ -165,6 +174,8 @@ function keyup(e) {
         keys.left = false;
     }
     if(e.keyCode == 38) {
+        
+
         if(player.y_v < -2) {
         player.y_v = -3;
         }
@@ -195,25 +206,26 @@ function loop() {
     // A simple code that checks for collions with the platform
     let i = -1;
     platforms.forEach((platform,index) => {
-        if(platform.x < player.x && player.x < platform.x + platform.width &&
+
+        if(platform.x < player.x && player.x - player.width < platform.x + platform.width &&
             platform.y < player.y && player.y < platform.y + platform.height){
             i = index;
+            if(player.y_v > 14) player.y_v = 0;
             console.log("ESTA EN LA PLATAFORMA " + index)
         }
     })
 
     enemies.forEach(enemy => {
-        if(player.x > enemy.x && player.x < enemy.x + enemy.width && 
-            player.y > enemy.y && player.y < enemy.y + enemy.width){
+        if(player.x + player.width > enemy.x  && player.x < enemy.x + enemy.width && 
+            player.y + player.height > enemy.y && player.y  < enemy.y + enemy.width){
             restartPosition();
             console.log("TOCO AL ENEMIGO")
         }
     });
 
-    if(player.x < 0 || player.x > 0 + canvas.width && 
-        player.y < 0 || player.y > 0 + canvas.width){
+    if(player.x < 0 || player.x + player.width > 0 + canvas.width && 
+        player.y + height < 0 || player.y > 0 + canvas.height){
         restartPosition();
-        console.log("SALIO DEL CANVAS")
     }
 
     if (i > -1){
